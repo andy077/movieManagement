@@ -7,6 +7,8 @@ import com.capgemini.movieManagement.dto.Show;
 import com.capgemini.movieManagement.exceptions.InvalidShowIdException;
 
 public class ShowService{
+	
+    static ShowDao showdao = new ShowDao();
 	public static int cntDigits(int showId){
 		int cnt=0;
 		while(showId!=0) {
@@ -17,7 +19,7 @@ public class ShowService{
 	}
 	public static void upLocalDateSeatsBooked(int showId) throws InvalidShowIdException {
 		if(cntDigits(showId)<8)throw new InvalidShowIdException("Invalid show id");
-		else ShowDao.showSearch(showId);
+		else showdao.showSearch(showId);
 	}
 
 }

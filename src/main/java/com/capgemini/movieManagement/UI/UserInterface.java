@@ -25,14 +25,18 @@ import com.capgemini.movieManagement.util.ShowRepository;
 import com.capgemini.movieManagement.util.TheatreRepository;
 import com.capgemini.movieManagement.util.TicketRepository;
 
-public class UserInterface {
-	
-	public static void init() {
+public class UserInterface 
+{	
+	public static void init() 
+	{
 		ShowRepository.initializeShow();
 		MovieRepository.initalizeMovie();
 		TheatreRepository.initializeTheatre();
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{		
+		MovieDao moviedao = new MovieDao();
+		
 		Scanner in=new Scanner(System.in);
 		init();
 		try {
@@ -57,7 +61,7 @@ public class UserInterface {
 			TheatreService.validateTheatreId(theatreId);
 			Theatre theatre=TheatreDao.getTheatreById(theatreId);
 			if(theatre==null) {
-				System.out.println("No Theatre Was Found With The Given Id");
+				System.out.println("Theatre id cannot be left blank");
 				System.exit(0);
 			}
 			
@@ -67,13 +71,13 @@ public class UserInterface {
 			System.out.println("Select a movie by id");
 			int id=in.nextInt();
 			MovieService.validateMovieId(id);
-			Movie movie=MovieDao.searchMovieById(id);
+			Movie movie=moviedao.searchMovieById(id);
 			if(movie==null) {
-				System.out.println("No Movie was found with the given Id");
+				System.out.println("Movie id cannot be blank");
 				System.exit(0);
 			}
 			System.out.print("Movie Name: "+movie.getMovieName()+"\n"+"Movie Director: "+movie.getMovieDirector()+"\n"+"Movie Languages: "+movie.getLanguages()+"\n"+"Movie Length"+movie.getMovieLength()+" hours");
-			System.out.println("\nEnter the number of seats to be booked");
+			System.out.println("\n\nEnter the number of seats to be booked :");
 			int seats=in.nextInt();
 			
 			TicketDao.addTicket(12345678,seats,"C",true,"Viva1");

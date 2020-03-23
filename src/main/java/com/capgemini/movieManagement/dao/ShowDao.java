@@ -10,9 +10,9 @@ import com.capgemini.movieManagement.dto.Ticket;
 import com.capgemini.movieManagement.util.ShowRepository;
 import com.capgemini.movieManagement.util.TicketRepository;
 
-public class ShowDao {
+public class ShowDao implements ShowDaoInterface {
 	//Searching for the show
-	public static Show showSearch(int showId) {
+	public Show showSearch(int showId) {
 		ArrayList<Show> showList=ShowRepository.getShowList();
 		for(int i=0;i<showList.size();i++) {
 			if(showList.get(i).getShowId()==showId) {

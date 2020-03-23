@@ -10,12 +10,14 @@ import com.capgemini.movieManagement.util.MovieRepository;
 
 public class MovieDaoTest {
 	
+	MovieDao moviedao = new MovieDao();
+	
 	@Test
 	public void movieSearhTest()
 	{
 		MovieRepository.initalizeMovie();
-		assertEquals("Panipat",MovieDao.searchMovieById(3002).getMovieName());
-		assertEquals("Tanhaji",MovieDao.searchMovieById(3004).getMovieName());
+		assertEquals("Panipat",moviedao.searchMovieById(3002).getMovieName());
+		assertEquals("Tanhaji",moviedao.searchMovieById(3004).getMovieName());
 	}
 
 }
