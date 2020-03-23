@@ -35,7 +35,7 @@ public class UserInterface
 	}
 	public static void main(String[] args) 
 	{		
-		MovieDao moviedao = new MovieDao();
+		MovieDao movieDao = new MovieDao();
 		
 		Scanner in=new Scanner(System.in);
 		init();
@@ -71,7 +71,7 @@ public class UserInterface
 			System.out.println("Select a movie by id");
 			int id=in.nextInt();
 			MovieService.validateMovieId(id);
-			Movie movie=moviedao.searchMovieById(id);
+			Movie movie=movieDao.searchMovieById(id);
 			if(movie==null) {
 				System.out.println("Movie id cannot be blank");
 				System.exit(0);
